@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  FlatList, 
+  Alert, 
+  TouchableWithoutFeedback, 
+  Keyboard 
+} from 'react-native';
 import Header from './components/Header.js';
 import TodoItem from './components/TodoItem.js';
 import TodoForm from './components/TodoForm.js';
+import Sandbox from './components/Sandbox.js'; 
 
 
 export default function App() {
-  const [todos, setTodos] = useState([
-    { text: 'bla', key: 1 },
-    { text: 'study more', key: 2 },
-    { text: 'meditate', key: 3 }
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const renderItem = ({ item }) => <TodoItem item={item} removeTodo={removeTodo} />;
 
@@ -34,23 +39,26 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Header title="My Todos" />
-      <View style={styles.content}>
-        <TodoForm addTodo={addTodo} />
-        <View style={styles.list}>
-          {
-            todos.length ? (
-              <FlatList
-                data={todos}
-                renderItem={renderItem} />
-            ) : (
-                <Text style={styles.text}>No Todos left :)</Text>
-              )
-          }
+    <Sandbox />
+    /*<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <Header title="My Todos" />
+        <View style={styles.content}>
+          <TodoForm addTodo={addTodo} />
+          <View style={styles.list}>
+            {
+              todos.length ? (
+                <FlatList
+                  data={todos}
+                  renderItem={renderItem} />
+              ) : (
+                  <Text style={styles.text}>No Todos left :)</Text>
+                )
+            }
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>*/
   );
 }
 
