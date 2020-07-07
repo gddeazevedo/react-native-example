@@ -11,13 +11,15 @@ import {
 import Header from './components/Header.js';
 import TodoItem from './components/TodoItem.js';
 import TodoForm from './components/TodoForm.js';
-import Sandbox from './components/Sandbox.js'; 
+import Sandbox from './components/Sandbox.js';
 
 
 export default function App() {
   const [todos, setTodos] = useState([]);
 
-  const renderItem = ({ item }) => <TodoItem item={item} removeTodo={removeTodo} />;
+  const renderItem = ({ item }) => (
+    <TodoItem item={item} removeTodo={removeTodo} />
+  );
 
   const removeTodo = key => {
     let newTodos = todos.filter(todo => todo.key !== key);
