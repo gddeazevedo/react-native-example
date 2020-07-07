@@ -29,7 +29,7 @@ export default function App() {
 
     if (text.length) {
       let key = todos.length ? todos.slice().pop().key + 1 : 1;
-      let todo = { text, key };
+      let todo = { text, key: key.toString() };
       setTodos([...todos, todo]);
     } else {
       Alert.alert('Oops!', 'You cannot add an empty todo!', [
@@ -39,8 +39,8 @@ export default function App() {
   };
 
   return (
-    <Sandbox />
-    /*<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    //<Sandbox />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <Header title="My Todos" />
         <View style={styles.content}>
@@ -58,7 +58,7 @@ export default function App() {
           </View>
         </View>
       </View>
-    </TouchableWithoutFeedback>*/
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -68,10 +68,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   content: {
-    padding: 40
+    padding: 40,
+    flex: 1
   },
   list: {
-    marginTop: 20
+    marginTop: 20,
+    flex: 1
   },
   text: {
     textAlign: 'center'
